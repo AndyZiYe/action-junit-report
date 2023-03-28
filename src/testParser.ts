@@ -293,10 +293,10 @@ async function parseSuite(
         skipped++
       }
       const stackTrace: string = (
-        (failure && failure._cdata) ||
-        (failure && failure._text) ||
-        (testcase.error && testcase.error._cdata) ||
-        (testcase.error && testcase.error._text) ||
+        (failure && failure._cdata + "111") ||
+        (failure && failure._text + "222") ||
+        (testcase.error && testcase.error._cdata + "333") ||
+        (testcase.error && testcase.error._text + "444") ||
         ''
       )
         .toString()
