@@ -584,9 +584,9 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                 }
                 if (failure) {
                     core.debug("1");
-                    core.debug(Object.keys(failure).toString());
+                    core.info(Object.keys(testcase["system-out"]).toString());
                     core.debug("2");
-                    core.debug(Object.keys(failure.systemout).toString());
+                    // core.debug(Object.keys(failure.systemout).toString())
                 }
                 const stackTrace = ((failure && `${failure._cdata}`) ||
                     (failure && `${failure._text}`) ||

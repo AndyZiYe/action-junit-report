@@ -297,9 +297,9 @@ async function parseSuite(
       }
       if (failure) {
         core.debug("1")
-        core.debug(Object.keys(failure).toString())
+        core.info(Object.keys(testcase["system-out"]).toString())
         core.debug("2")
-        core.debug(Object.keys(failure.systemout).toString())
+        // core.debug(Object.keys(failure.systemout).toString())
       }
       const stackTrace: string = (
         (failure && `${failure._cdata}`) ||
