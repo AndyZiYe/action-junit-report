@@ -581,11 +581,12 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                     skipped++;
                 }
                 if (failure) {
+                    core.debug("1");
                     core.debug(Object.keys(failure).toString());
+                    core.debug("2");
                     core.debug(Object.keys(failure.systemout).toString());
-                    core.debug(failure.systemout.toString());
                 }
-                const stackTrace = ((failure && `${failure._cdata}\n${failure.systemout}`) ||
+                const stackTrace = ((failure && `${failure._cdata}`) ||
                     (failure && `${failure._text}`) ||
                     (testcase.error && `${testcase.error._cdata}`) ||
                     (testcase.error && `${testcase.error._text}`) ||
