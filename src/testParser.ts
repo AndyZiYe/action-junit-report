@@ -293,7 +293,8 @@ async function parseSuite(
         skipped++
       }
       if (failure) {
-        core.debug(`HAHAHAHA`)
+        core.debug(Object.keys(failure).toString())
+        core.debug(Object.keys(failure.systemout).toString())
         core.debug(failure.systemout.toString())
       }
       const stackTrace: string = (
