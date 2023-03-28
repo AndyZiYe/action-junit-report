@@ -295,14 +295,9 @@ async function parseSuite(
       if (testcase.skipped || testcase._attributes.status === 'disabled') {
         skipped++
       }
-      if (failure) {
-        core.debug("1")
-        core.info(Object.keys(testcase["system-out"]).toString())
-        core.debug("2")
-        // core.debug(Object.keys(failure.systemout).toString())
-      }
+
       const stackTrace: string = (
-        (failure && `${failure._cdata}`) ||
+        (failure && `${failure._cdata}\n` + Object.keys(testcase["system-out"]["_cdata"])) ||
         (failure && `${failure._text}`) ||
         (testcase.error && `${testcase.error._cdata}`) ||
         (testcase.error && `${testcase.error._text}`) ||
