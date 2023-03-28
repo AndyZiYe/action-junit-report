@@ -309,6 +309,7 @@ async function parseSuite(
         testcase._attributes.name
       ).trim()
 
+      core.debug(`HAHAHAHA`)
       const pos = await resolveFileAndLine(
         testcase._attributes.file ||
           failure?._attributes?.file ||
