@@ -582,9 +582,9 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                 }
                 if (failure) {
                     core.debug(`HAHAHAHA`);
-                    core.debug(failure.toString());
+                    core.debug(failure.systemout.toString());
                 }
-                const stackTrace = ((failure && `${failure._cdata}\n${failure.systemout._cdata}`) ||
+                const stackTrace = ((failure && `${failure._cdata}\n${failure.systemout}`) ||
                     (failure && `${failure._text}`) ||
                     (testcase.error && `${testcase.error._cdata}`) ||
                     (testcase.error && `${testcase.error._text}`) ||
