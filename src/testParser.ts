@@ -303,8 +303,8 @@ async function parseSuite(
         .trim()
 
       const message: string = (
-        (failure && failure._attributes && failure._attributes.message) ||
-        (testcase.error && testcase.error._attributes && testcase.error._attributes.message) ||
+        (failure && failure._attributes && failure._attributes.message + "555") ||
+        (testcase.error && testcase.error._attributes && testcase.error._attributes.message + "666") ||
         stackTrace.split('\n').slice(0, 2).join('\n') ||
         testcase._attributes.name
       ).trim()
