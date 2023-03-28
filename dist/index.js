@@ -580,14 +580,18 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                 if (testcase.skipped || testcase._attributes.status === 'disabled') {
                     skipped++;
                 }
-                const stackTrace = ((failure && `${failure._cdata}111`) ||
-                    (failure && `${failure._text}222`) ||
-                    (testcase.error && `${testcase.error._cdata}333`) ||
-                    (testcase.error && `${testcase.error._text}444`) ||
+                if (failure) {
+                    core.debug(`HAHAHAHA`);
+                    core.debug(failure.toString());
+                }
+                const stackTrace = ((failure && `${failure._cdata}\n${failure.systemout._cdata}`) ||
+                    (failure && `${failure._text}`) ||
+                    (testcase.error && `${testcase.error._cdata}`) ||
+                    (testcase.error && `${testcase.error._text}`) ||
                     '')
                     .toString()
                     .trim();
-                const message = ((failure && failure._attributes && `${failure._attributes.message}555`) ||
+                const message = ((failure && failure._attributes && `${failure._attributes.message}`) ||
                     (testcase.error && testcase.error._attributes && `${testcase.error._attributes.message}666`) ||
                     stackTrace.split('\n').slice(0, 2).join('\n') ||
                     testcase._attributes.name).trim();
@@ -603,7 +607,6 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                 let resolvedPath = failed || (annotatePassed && success)
                     ? yield resolvePath(transformedFileName, excludeSources, followSymlink)
                     : transformedFileName;
-                core.debug(`HAHAHAHA`);
                 core.debug(`Path prior to stripping: ${resolvedPath}`);
                 const githubWorkspacePath = process.env['GITHUB_WORKSPACE'];
                 if (githubWorkspacePath) {
