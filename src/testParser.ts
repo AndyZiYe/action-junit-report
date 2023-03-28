@@ -152,8 +152,6 @@ export async function parseFile(
   const data: string = fs.readFileSync(file, 'utf8')
 
   const report = JSON.parse(parser.xml2json(data, {compact: true}))
-  core.info(JSON.stringify(report))
-  core.info("-----")
 
   return parseSuite(
     report,
@@ -295,7 +293,12 @@ async function parseSuite(
       if (testcase.skipped || testcase._attributes.status === 'disabled') {
         skipped++
       }
-
+      if (failure) {
+        core.info("1")
+        core.info(Object.keys(testcase["system-out"]).toString())
+        core.info("2")
+        // core.debug(Object.keys(failure.systemout).toString())
+      }
       const stackTrace: string = (
         (failure && `${failure._cdata}\n` + Object.keys(testcase["system-out"]["_cdata"])) ||
         (failure && `${failure._text}`) ||

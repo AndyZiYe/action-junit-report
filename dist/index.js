@@ -481,8 +481,6 @@ function parseFile(file, suiteRegex = '', annotatePassed = false, checkRetries =
         core.debug(`Parsing file ${file}`);
         const data = fs.readFileSync(file, 'utf8');
         const report = JSON.parse(parser.xml2json(data, { compact: true }));
-        core.info(JSON.stringify(report));
-        core.info("-----");
         return parseSuite(report, '', suiteRegex, annotatePassed, checkRetries, excludeSources, checkTitleTemplate, testFilesPrefix, transformer, followSymlink, annotationsLimit);
     });
 }
@@ -581,6 +579,12 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                 const failure = failures ? failures[0] : undefined;
                 if (testcase.skipped || testcase._attributes.status === 'disabled') {
                     skipped++;
+                }
+                if (failure) {
+                    core.info("1");
+                    core.info(Object.keys(testcase["system-out"]).toString());
+                    core.info("2");
+                    // core.debug(Object.keys(failure.systemout).toString())
                 }
                 const stackTrace = ((failure && `${failure._cdata}\n` + Object.keys(testcase["system-out"]["_cdata"])) ||
                     (failure && `${failure._text}`) ||
