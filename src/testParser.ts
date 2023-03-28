@@ -293,18 +293,18 @@ async function parseSuite(
         skipped++
       }
       const stackTrace: string = (
-        (failure && failure._cdata + "111") ||
-        (failure && failure._text + "222") ||
-        (testcase.error && testcase.error._cdata + "333") ||
-        (testcase.error && testcase.error._text + "444") ||
+        (failure && `${failure._cdata}111`) ||
+        (failure && `${failure._text}222`) ||
+        (testcase.error && `${testcase.error._cdata}333`) ||
+        (testcase.error && `${testcase.error._text}444`) ||
         ''
       )
         .toString()
         .trim()
 
       const message: string = (
-        (failure && failure._attributes && failure._attributes.message + "555") ||
-        (testcase.error && testcase.error._attributes && testcase.error._attributes.message + "666") ||
+        (failure && failure._attributes && `${failure._attributes.message}555`) ||
+        (testcase.error && testcase.error._attributes && `${testcase.error._attributes.message}666`) ||
         stackTrace.split('\n').slice(0, 2).join('\n') ||
         testcase._attributes.name
       ).trim()
