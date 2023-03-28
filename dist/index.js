@@ -480,8 +480,9 @@ function parseFile(file, suiteRegex = '', annotatePassed = false, checkRetries =
     return __awaiter(this, void 0, void 0, function* () {
         core.debug(`Parsing file ${file}`);
         const data = fs.readFileSync(file, 'utf8');
-        core.debug(data);
         const report = JSON.parse(parser.xml2json(data, { compact: true }));
+        core.info(JSON.stringify(report));
+        core.info("-----");
         return parseSuite(report, '', suiteRegex, annotatePassed, checkRetries, excludeSources, checkTitleTemplate, testFilesPrefix, transformer, followSymlink, annotationsLimit);
     });
 }

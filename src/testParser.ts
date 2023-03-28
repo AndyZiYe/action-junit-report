@@ -150,8 +150,10 @@ export async function parseFile(
   core.debug(`Parsing file ${file}`)
 
   const data: string = fs.readFileSync(file, 'utf8')
-  core.debug(data)
+
   const report = JSON.parse(parser.xml2json(data, {compact: true}))
+  core.info(JSON.stringify(report))
+  core.info("-----")
 
   return parseSuite(
     report,
