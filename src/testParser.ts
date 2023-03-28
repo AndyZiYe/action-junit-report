@@ -293,14 +293,14 @@ async function parseSuite(
       if (testcase.skipped || testcase._attributes.status === 'disabled') {
         skipped++
       }
-      if (failure) {
-        core.info("1")
-        core.info(Object.keys(testcase["system-out"]).toString())
-        core.info("2")
-        // core.debug(Object.keys(failure.systemout).toString())
-      }
+      // if (failure) {
+      //   core.info("1")
+      //   core.info(Object.keys(testcase["system-out"]["_cdata"]).toString())
+      //   core.info(testcase["system-out"]["_cdata"]).toString())
+      //   core.info("2")
+      // }
       const stackTrace: string = (
-        (failure && `${failure._cdata}\n` + Object.keys(testcase["system-out"]["_cdata"])) ||
+        (failure && `${failure._cdata}\n` + testcase["system-out"]["_cdata"]) ||
         (failure && `${failure._text}`) ||
         (testcase.error && `${testcase.error._cdata}`) ||
         (testcase.error && `${testcase.error._text}`) ||
