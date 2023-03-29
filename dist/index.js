@@ -580,14 +580,14 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                 if (testcase.skipped || testcase._attributes.status === 'disabled') {
                     skipped++;
                 }
-                const stackTrace = ((failure && `${failure._cdata}\n` + testcase["system-out"]["_cdata"]) ||
+                const stackTrace = ((failure && `${failure._cdata}`) ||
                     (failure && `${failure._text}`) ||
                     (testcase.error && `${testcase.error._cdata}`) ||
                     (testcase.error && `${testcase.error._text}`) ||
                     '')
                     .toString()
                     .trim();
-                const message = ((failure && failure._attributes && `${failure._attributes.message}`) ||
+                const message = ((failure && failure._attributes && `${failure._attributes.message}` + testcase["system-out"]["_cdata"]) ||
                     (testcase.error && testcase.error._attributes && `${testcase.error._attributes.message}666`) ||
                     stackTrace.split('\n').slice(0, 2).join('\n') ||
                     testcase._attributes.name).trim();
@@ -636,8 +636,8 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                     end_column: 0,
                     annotation_level: success ? 'notice' : 'failure',
                     title: escapeEmoji(title),
-                    message: escapeEmoji(message + "111"),
-                    raw_details: escapeEmoji(stackTrace + "111")
+                    message: escapeEmoji(message),
+                    raw_details: escapeEmoji(stackTrace)
                 });
                 if (annotationsLimit > 0) {
                     const count = annotations.filter(a => a.annotation_level === 'failure' || annotatePassed).length;
