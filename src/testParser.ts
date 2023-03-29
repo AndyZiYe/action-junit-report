@@ -295,7 +295,7 @@ async function parseSuite(
       }
 
       const stackTrace: string = (
-        (failure && `${failure._cdata}`) ||
+        (failure && `<b>Stacktrace:</b> \n${failure._cdata}\n<b>Standard Output: </b>\n` + testcase["system-out"]["_cdata"]) ||
         (failure && `${failure._text}`) ||
         (testcase.error && `${testcase.error._cdata}`) ||
         (testcase.error && `${testcase.error._text}`) ||
@@ -305,7 +305,7 @@ async function parseSuite(
         .trim()
 
       const message: string = (
-        (failure && failure._attributes && `${failure._attributes.message}` + testcase["system-out"]["_cdata"]) ||
+        (failure && failure._attributes && `${failure._attributes.message}`) ||
         (testcase.error && testcase.error._attributes && `${testcase.error._attributes.message}666`) ||
         stackTrace.split('\n').slice(0, 2).join('\n') ||
         testcase._attributes.name
