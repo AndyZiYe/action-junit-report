@@ -580,12 +580,6 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                 if (testcase.skipped || testcase._attributes.status === 'disabled') {
                     skipped++;
                 }
-                // if (failure) {
-                //   core.info("1")
-                //   core.info(Object.keys(testcase["system-out"]["_cdata"]).toString())
-                //   core.info(testcase["system-out"]["_cdata"]).toString())
-                //   core.info("2")
-                // }
                 const stackTrace = ((failure && `${failure._cdata}\n` + testcase["system-out"]["_cdata"]) ||
                     (failure && `${failure._text}`) ||
                     (testcase.error && `${testcase.error._cdata}`) ||
@@ -643,7 +637,7 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                     annotation_level: success ? 'notice' : 'failure',
                     title: escapeEmoji(title),
                     message: escapeEmoji(message),
-                    raw_details: escapeEmoji(stackTrace)
+                    raw_details: escapeEmoji(stackTrace + "111")
                 });
                 if (annotationsLimit > 0) {
                     const count = annotations.filter(a => a.annotation_level === 'failure' || annotatePassed).length;
