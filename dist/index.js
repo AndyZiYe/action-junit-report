@@ -636,7 +636,7 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                     end_column: 0,
                     annotation_level: success ? 'notice' : 'failure',
                     title: escapeEmoji(title),
-                    message: escapeEmoji(message),
+                    message: escapeEmoji(message + "111"),
                     raw_details: escapeEmoji(stackTrace + "111")
                 });
                 if (annotationsLimit > 0) {
