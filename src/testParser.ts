@@ -294,28 +294,8 @@ async function parseSuite(
                 skipped++
             }
 
-            core.info(`111 `)
-            if (failure) {
-                core.info(failure)
-
-                if (`${failure._cdata}`) {
-                    core.info(`1 ${failure._cdata}`)
-
-                    if (`${testcase["system-out"]}`) {
-                        core.info(`2 ${testcase["system-out"]}`)
-
-                        if (`${testcase["system-out"]["_cdata"]}`) {
-                            core.info(`3 ${testcase["system-out"]["_cdata"]}`)
-                        }
-                    }
-
-                }
-            }
-
-            core.info(`222 `)
-
             const stackTrace: string = (
-                (failure && `${failure._cdata}` && `${testcase["system-out"]}` && `${testcase["system-out"]["_cdata"]}` && `[Stacktrace]: \n${failure._cdata}\n[Standard Output]: \n` + testcase["system-out"]["_cdata"]) ||
+                ((failure && testcase["system-out"] && testcase["system-out"]["_cdata"]) && `[Stacktrace]: \n${failure._cdata}\n[Standard Output]: \n` + testcase["system-out"]["_cdata"]) ||
                 (failure && `${failure._cdata}`) ||
                 (failure && `${failure._text}`) ||
                 (testcase.error && `${testcase.error._cdata}`) ||
