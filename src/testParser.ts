@@ -295,7 +295,7 @@ async function parseSuite(
             }
 
             core.info(`111 `)
-            if (`${failure}`) {
+            if (failure) {
                 core.info(failure)
 
                 if (`${failure._cdata}`) {
