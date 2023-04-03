@@ -296,7 +296,7 @@ async function parseSuite(
 
             core.info(`111 `)
             if (`${failure}`) {
-                core.info(`0 ${failure}`)
+                core.info(failure)
 
                 if (`${failure._cdata}`) {
                     core.info(`1 ${failure._cdata}`)
@@ -312,7 +312,7 @@ async function parseSuite(
                 }
             }
 
-
+            core.info(`222 `)
 
             const stackTrace: string = (
                 (failure && `${failure._cdata}` && `${testcase["system-out"]}` && `${testcase["system-out"]["_cdata"]}` && `[Stacktrace]: \n${failure._cdata}\n[Standard Output]: \n` + testcase["system-out"]["_cdata"]) ||
