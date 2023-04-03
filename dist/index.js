@@ -580,6 +580,7 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                 if (testcase.skipped || testcase._attributes.status === 'disabled') {
                     skipped++;
                 }
+                core.info(`111`);
                 core.info(`1 ${failure._cdata}`);
                 core.info(`2 ${testcase["system-out"]}`);
                 core.info(`3 ${testcase["system-out"]["_cdata"]}`);

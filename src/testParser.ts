@@ -294,6 +294,7 @@ async function parseSuite(
                 skipped++
             }
 
+            core.info(`111`)
             core.info(`1 ${failure._cdata}`)
             core.info(`2 ${testcase["system-out"]}`)
             core.info(`3 ${testcase["system-out"]["_cdata"]}`)
