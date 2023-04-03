@@ -580,6 +580,9 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                 if (testcase.skipped || testcase._attributes.status === 'disabled') {
                     skipped++;
                 }
+                core.info(`1 ${failure._cdata}`);
+                core.info(`2 ${testcase["system-out"]}`);
+                core.info(`3 ${testcase["system-out"]["_cdata"]}`);
                 const stackTrace = ((failure && `${failure._cdata}` && `${testcase["system-out"]}` && `${testcase["system-out"]["_cdata"]}` && `[Stacktrace]: \n${failure._cdata}\n[Standard Output]: \n` + testcase["system-out"]["_cdata"]) ||
                     (failure && `${failure._cdata}`) ||
                     (failure && `${failure._text}`) ||
