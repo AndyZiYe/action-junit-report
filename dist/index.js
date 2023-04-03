@@ -581,9 +581,18 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                     skipped++;
                 }
                 core.info(`111`);
-                core.info(`1 ${failure._cdata}`);
-                core.info(`2 ${testcase["system-out"]}`);
-                core.info(`3 ${testcase["system-out"]["_cdata"]}`);
+                if (`${failure}`) {
+                    core.info(`0 ${failure}`);
+                    if (`${failure._cdata}`) {
+                        core.info(`1 ${failure._cdata}`);
+                        if (`${testcase["system-out"]}`) {
+                            core.info(`2 ${testcase["system-out"]}`);
+                            if (`${testcase["system-out"]["_cdata"]}`) {
+                                core.info(`3 ${testcase["system-out"]["_cdata"]}`);
+                            }
+                        }
+                    }
+                }
                 const stackTrace = ((failure && `${failure._cdata}` && `${testcase["system-out"]}` && `${testcase["system-out"]["_cdata"]}` && `[Stacktrace]: \n${failure._cdata}\n[Standard Output]: \n` + testcase["system-out"]["_cdata"]) ||
                     (failure && `${failure._cdata}`) ||
                     (failure && `${failure._text}`) ||
